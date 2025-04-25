@@ -148,18 +148,36 @@ cd /opt/stack
 docker compose up -d || erro "Falha ao iniciar os contêineres"
 sucesso "Serviços iniciados com sucesso!"
 
+# Iniciar MPC Server para Docker
+info "Iniciando o MPC Server para Docker..."
+docker run -d \
+  --name mcp-docker-server \
+  --restart always \
+  -p 7777:8000 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  ghcr.io/quantgeekdev/docker-mcp:latest || erro "Falha ao iniciar o MPC Server"
+sucesso "MPC Server iniciado com sucesso na porta 7777!"
+
+# Obter o IP público da máquina
+IP=$(curl -s http://ifconfig.me)
+
 # 9. Mensagem final
 echo ""
 echo "======================================================================"
 echo "INSTALAÇÃO CONCLUÍDA COM SUCESSO!"
 echo "======================================================================"
 echo ""
-echo "Para acessar o Portainer: https://portainer.${DOMINIO}"
-echo "Para acessar o dashboard do Traefik: https://traefik.${DOMINIO}"
+echo "Serviços instalados e configurados:"
+echo " - Docker, Traefik e Portainer estão rodando."
+echo " - O MPC Server para Docker está rodando na porta 7777."
 echo ""
-echo "IMPORTANTE: Certifique-se de configurar os registros DNS para:"
-echo "  - portainer.${DOMINIO}"
-echo "  - traefik.${DOMINIO}"
+echo "Próximos Passos:"
+echo " 1. Configure o DNS dos subdomínios para apontar para o IP desta VPS ($IP):"
+echo "    - portainer.${DOMINIO}"
+echo "    - traefik.${DOMINIO}"
+echo " 2. Libere as portas 80, 443 e 7777 no firewall da VPS."
+echo " 3. Acesse o Portainer em https://portainer.${DOMINIO}"
+echo " 4. Configure o Cursor IA para conectar ao MPC Server em http://$IP:7777"
 echo ""
 echo "Credenciais iniciais para o Traefik Dashboard:"
 echo "  - Usuário: admin"
