@@ -17,7 +17,21 @@ Este script automatiza a instalação e configuração dos seguintes componentes
 - Um domínio apontando para o IP da sua VPS
 - Portas 80 e 443 liberadas no firewall
 
-## Como usar
+## Como Usar
+
+1. **Conecte-se à sua VPS Ubuntu (20.04 ou superior) via SSH.**
+2. **Execute o seguinte comando para baixar e rodar o script:**
+
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/LuizBranco-ClickHype/vps-installer-script/main/install.sh | sudo bash
+   ```
+3. **Siga as instruções do script:** Você precisará fornecer um nome de domínio (ex: `portainer.seudominio.com`) e um email para o certificado SSL (Let's Encrypt).
+4. **Configure o DNS:** Certifique-se de que o domínio fornecido no passo anterior aponte para o endereço IP da sua VPS.
+5. **Firewall:** Libere as portas 80 (HTTP) e 443 (HTTPS) no firewall da sua VPS.
+
+Após a execução, você poderá acessar o Portainer através do domínio configurado.
+
+## Método Alternativo de Instalação
 
 1. Faça login na sua VPS via SSH
 
