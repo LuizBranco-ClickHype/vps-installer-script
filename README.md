@@ -9,13 +9,14 @@ Este script automatiza a instalação e configuração dos seguintes componentes
 - Docker Engine e Docker Compose
 - Traefik (como proxy reverso com suporte a HTTPS automático via Let's Encrypt)
 - Portainer CE (interface gráfica para gerenciamento de contêineres Docker)
+- MPC Server para Docker (permite integração com o Cursor IA)
 
 ## Requisitos
 
 - Ubuntu 20.04 ou superior
 - Privilégios de superusuário (root)
 - Um domínio apontando para o IP da sua VPS
-- Portas 80 e 443 liberadas no firewall
+- Portas 80, 443 e 7777 liberadas no firewall
 
 ## Como Usar
 
@@ -27,9 +28,9 @@ Este script automatiza a instalação e configuração dos seguintes componentes
    ```
 3. **Siga as instruções do script:** Você precisará fornecer um nome de domínio (ex: `portainer.seudominio.com`) e um email para o certificado SSL (Let's Encrypt).
 4. **Configure o DNS:** Certifique-se de que o domínio fornecido no passo anterior aponte para o endereço IP da sua VPS.
-5. **Firewall:** Libere as portas 80 (HTTP) e 443 (HTTPS) no firewall da sua VPS.
+5. **Firewall:** Libere as portas 80 (HTTP), 443 (HTTPS) e 7777 (MPC Server) no firewall da sua VPS.
 
-Após a execução, você poderá acessar o Portainer através do domínio configurado.
+Após a execução, você poderá acessar o Portainer através do domínio configurado e conectar o Cursor IA ao MPC Server no endereço http://IP-DA-VPS:7777.
 
 ## Método Alternativo de Instalação
 
@@ -58,12 +59,15 @@ Depois que a instalação for concluída com sucesso, você poderá acessar:
 
 - Portainer: https://portainer.seu-dominio.com
 - Traefik Dashboard: https://traefik.seu-dominio.com (usuário: admin, senha: admin)
+- MPC Server (para Cursor IA): http://IP-DA-VPS:7777
 
 ## Importante
 
 Certifique-se de configurar os registros DNS corretos para os subdomínios:
 - portainer.seu-dominio.com
 - traefik.seu-dominio.com
+
+Para usar o Cursor IA com o MPC Server, configure a conexão nas configurações do Cursor apontando para http://IP-DA-VPS:7777.
 
 ## Licença
 
