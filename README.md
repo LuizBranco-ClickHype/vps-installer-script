@@ -28,7 +28,8 @@ Este script automatiza a instalação e configuração dos seguintes componentes
    ```
 3. **Siga as instruções do script:** Você precisará fornecer um nome de domínio (ex: `portainer.seudominio.com`) e um email para o certificado SSL (Let's Encrypt).
 4. **Configure o DNS:** Certifique-se de que o domínio fornecido no passo anterior aponte para o endereço IP da sua VPS.
-5. **Firewall:** Libere as portas 80 (HTTP), 443 (HTTPS) e 7777 (MPC Server) no firewall da sua VPS.
+5. **Firewall:** Libere as portas 80 (HTTP), 443 (HTTPS) e 7777 (MPC Docker) no firewall da sua VPS.
+6. **Configurar Cursor IA:** Após a execução do script e a configuração do DNS/Firewall, conecte o Cursor IA ao MPC Server do Docker. Use o endereço `http://IP_DA_SUA_VPS:7777`. Geralmente não é necessário token de acesso para este servidor específico.
 
 Após a execução, você poderá acessar o Portainer através do domínio configurado e conectar o Cursor IA ao MPC Server no endereço http://IP-DA-VPS:7777.
 
